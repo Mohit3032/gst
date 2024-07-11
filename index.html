@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main_m {
+            height: 97vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        input {
+            padding: 10px;
+        }
+        .btn {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+        span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main_m">
+        <div class="main">
+            <input type="number" id="price" placeholder="Price"/>
+            <input type="number" id="quantity" placeholder="Quantity"/>
+            <input type="number" id="distance" placeholder="Distance in km"/>
+        </div>
+        <div>
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p4"></p>
+            <p id="p3"></p>
+           
+            <span> Total Price: <p id="totalprice"></p></span>
+            <button class="btn" onclick="show()">Submit</button>
+        </div>
+    </div>
+    <script>
+        function show() {
+            const price = document.getElementById('price').value;
+            const quantity = document.getElementById('quantity').value;
+            const distance = document.getElementById('distance').value;
+            const costPerKm = 10;
+            const gstrate = 18;
+
+            const priceQuant = price * quantity;
+            const distanceCost = distance * costPerKm;
+            let gstAmount = (priceQuant * gstrate) / 100;
+            const withGST = priceQuant + gstAmount 
+            allvalue = withGST +costPerKm
+
+            document.getElementById('p1').innerHTML = `Price: ${price}`;
+            document.getElementById('p2').innerHTML = `Quantity: ${quantity}`;
+            document.getElementById('p4').innerHTML = `With GST: ${withGST} ₹`;
+            document.getElementById('p3').innerHTML = `Distance in km: ${distanceCost} ₹ `;
+            
+
+            const totalPrice = allvalue;
+            document.getElementById('totalprice').innerText = totalPrice + '₹';
+        }
+
+    </script>
+</body>
+</html>
